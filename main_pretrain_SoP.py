@@ -110,6 +110,9 @@ def main():
     args = parser.parse_args()
     
     METHOD = "SoP_Gamma_" + str(args.gamma)
+    
+    if os.path.exists(METHOD) == False:
+        os.system('mkdir ' + METHOD)
 
     if args.seed is not None:
         random.seed(args.seed)
