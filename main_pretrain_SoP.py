@@ -111,8 +111,8 @@ def main():
     
     METHOD = "SoP_Gamma_" + str(args.gamma)
     
-    if os.path.exists(METHOD) == False:
-        os.system('mkdir ' + METHOD)
+    if os.path.exists('./checkpoints/' + METHOD) == False:
+        os.system('mkdir ./checkpoints/' + METHOD)
 
     if args.seed is not None:
         random.seed(args.seed)
@@ -403,9 +403,9 @@ def validate(val_loader, model, sop_classifier, criterion, args):
 
 
 def save_checkpoint(state, is_best, method, filename= '/checkpoint.pth.tar'):
-    torch.save(state, 'checkpoints/' + method + filename)
+    torch.save(state, './checkpoints/' + method + filename)
     if is_best:
-        shutil.copyfile(filename, 'checkpoints/' + method + '/model_best.pth.tar')
+        shutil.copyfile(filename, './checkpoints/' + method + '/model_best.pth.tar')
 
 
 class AverageMeter(object):
